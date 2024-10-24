@@ -12,11 +12,7 @@ export const CreateTodo = () => {
                     changeStatusDialogAddTodo()
                 }}
             >Add</Button>
-            <Button
-                onClick={() => {
-                    changeStatusDialogEditTodo()
-                }}
-            >Edit</Button>
+           
         </>
     )
 }

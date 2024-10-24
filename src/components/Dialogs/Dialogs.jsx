@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/dialog";
 
 import AddTodo from "./AddTodo";
+import { EditTodo } from "./EditTodo";
 
 export const Dialogs = ({ subject, role }) => {
   const {
@@ -46,7 +47,11 @@ export const Dialogs = ({ subject, role }) => {
               {
               role === "AddTodo" 
               ? <AddTodo /> 
-              : <></>}
+              : role === 'EditTodo' 
+              ? <EditTodo />
+              : <>
+              </>
+            }
             </DialogDescription>
           </DialogHeader>
         </DialogContent>
