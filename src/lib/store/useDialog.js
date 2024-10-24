@@ -7,6 +7,6 @@ export const useDialog = create(
 
 
 
-        changeStatusDialogAddTodo : () => set((state) => {state.isOpenDialogAddTodo = !isOpenDialogAddTodo})
+        changeStatusDialogAddTodo : () => set((state) => {state.isOpenDialogAddTodo = !state.isOpenDialogAddTodo})
     }))
 )

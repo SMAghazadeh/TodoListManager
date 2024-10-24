@@ -8,7 +8,9 @@ export const CreateTodo = () => {
     return (
         <>
             <Button
-                onClick={() => changeStatusDialogAddTodo()}
+                onClick={() => {
+                    changeStatusDialogAddTodo()
+                }}
             >Add</Button>
         </>
     )

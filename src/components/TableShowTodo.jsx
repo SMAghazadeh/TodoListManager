@@ -9,8 +9,11 @@ import {
     TableHeader,
     TableRow,
 } from "@/components/ui/table"
+import { Todo } from '@/lib/store/Todo'
 
-export const TableShowTodo = ({ node }) => {
+export const TableShowTodo = () => {
+    const { TodoList } = Todo()
+    console.log(TodoList);
     return (
         <Table>
             <TableCaption>Todo list</TableCaption>
@@ -22,11 +25,15 @@ export const TableShowTodo = ({ node }) => {
                 </TableRow>
             </TableHeader>
             <TableBody>
-                <TableRow>
-                    <TableCell>{node.title}</TableCell>
-                    <TableCell>{node.description}</TableCell>
-                    <TableCell>{node.status === true ? 'Done!' : 'doing'}</TableCell>
-                </TableRow>
+                {TodoList.map((node) => (
+                    <React.Fragment key={node.id}>
+                        <TableRow>
+                            <TableCell>{node.title}</TableCell>
+                            <TableCell>{node.description}</TableCell>
+                            <TableCell>{node.status === true ? 'Done!' : 'doing'}</TableCell>
+                        </TableRow>
+                    </React.Fragment>
+                ))}
             </TableBody>
         </Table>
     )
