@@ -31,9 +31,15 @@ export const Todo = create(immer((set) => ({
             title: title,
             description: description
         })
+    }),
+
+    EditToDo: (id, title, description) => set((state) => {
+        const item = state.TodoList.find((item) => item.id === id);
+        if (item) {
+            item.title = title;
+            item.description = description;  
+        }
     })
-
-
-
+    
 
 })))
