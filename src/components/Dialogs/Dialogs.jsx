@@ -13,13 +13,15 @@ import {
 
 import AddTodo from "./AddTodo";
 import { EditTodo } from "./EditTodo";
-
+import { DeletTodo } from "./DeletTodo";
 export const Dialogs = ({ subject, role }) => {
   const {
     isOpenDialogAddTodo,
     changeStatusDialogAddTodo,
     isOpenDialogEditTodo,
-    changeStatusDialogEditTodo
+    changeStatusDialogEditTodo,
+    isOpenDialogDeleteTodo,
+    changeStatusDialogDeleteTodo
   } = useDialog();
 
   return (
@@ -30,28 +32,34 @@ export const Dialogs = ({ subject, role }) => {
             ? isOpenDialogAddTodo
             : role === "EditTodo"
             ? isOpenDialogEditTodo
+            : role === 'Delete'
+            ? isOpenDialogDeleteTodo
             : false
+
         }
-        onOpenChange={ 
-          role === 'AddTodo' 
-          ? changeStatusDialogAddTodo 
-          : role === 'EditTodo' 
-          ? changeStatusDialogEditTodo 
-          : false
+        onOpenChange={
+          role === "AddTodo"
+            ? changeStatusDialogAddTodo
+            : role === "EditTodo"
+            ? changeStatusDialogEditTodo
+            : role === 'Delete' 
+            ? changeStatusDialogDeleteTodo
+            : false
         }
       >
         <DialogContent>
           <DialogHeader>
             <DialogTitle>{subject}</DialogTitle>
             <DialogDescription>
-              {
-              role === "AddTodo" 
-              ? <AddTodo /> 
-              : role === 'EditTodo' 
-              ? <EditTodo />
-              : <>
-              </>
-            }
+              {role === "AddTodo" ? (
+                <AddTodo />
+              ) : role === "EditTodo" ? (
+                <EditTodo />
+              ) : role === "Delete" ? (
+                <DeletTodo />
+              ) : (
+                <>j</>
+              )}
             </DialogDescription>
           </DialogHeader>
         </DialogContent>
