@@ -14,6 +14,7 @@ export const ShowTodo = () => {
 
       <CreateTodo />
       <Dialogs subject={'Add Todo'} role={'AddTodo'} />
+      <Dialogs subject={'Edit Todo'} role={'EditTodo'} />
     </>
   )
 }

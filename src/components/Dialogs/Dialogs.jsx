@@ -14,19 +14,39 @@ import {
 import AddTodo from "./AddTodo";
 
 export const Dialogs = ({ subject, role }) => {
-  const { isOpenDialogAddTodo, changeStatusDialogAddTodo } = useDialog();
+  const {
+    isOpenDialogAddTodo,
+    changeStatusDialogAddTodo,
+    isOpenDialogEditTodo,
+    changeStatusDialogEditTodo
+  } = useDialog();
 
   return (
     <>
       <Dialog
-        open={isOpenDialogAddTodo}
-        onOpenChange={changeStatusDialogAddTodo}
+        open={
+          role === "AddTodo"
+            ? isOpenDialogAddTodo
+            : role === "EditTodo"
+            ? isOpenDialogEditTodo
+            : false
+        }
+        onOpenChange={ 
+          role === 'AddTodo' 
+          ? changeStatusDialogAddTodo 
+          : role === 'EditTodo' 
+          ? changeStatusDialogEditTodo 
+          : false
+        }
       >
         <DialogContent>
           <DialogHeader>
             <DialogTitle>{subject}</DialogTitle>
             <DialogDescription>
-              {role === "AddTodo" ? <AddTodo /> : <></>}
+              {
+              role === "AddTodo" 
+              ? <AddTodo /> 
+              : <></>}
             </DialogDescription>
           </DialogHeader>
         </DialogContent>
