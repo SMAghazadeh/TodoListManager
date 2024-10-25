@@ -33,13 +33,18 @@ export const Todo = create(immer((set) => ({
         })
     }),
 
+
+    RemoveTodo: (index) => set((state) => {
+        state.TodoList = state.TodoList.filter((_,i)=> i !== index )
+    }),
+
     EditToDo: (id, title, description) => set((state) => {
         const item = state.TodoList.find((item) => item.id === id);
         if (item) {
             item.title = title;
             item.description = description;  
         }
-    })
-    
+    }),
+
 
 })))
