@@ -11,6 +11,20 @@ export const Todo = create(immer((set) => ({
             status : true
 
         },
+        {
+            id:uuidv4(),
+            title: 'Designer',
+            description: 'Graphic',
+            status : true
+
+        },
+        {
+            id:uuidv4(),
+            title: 'Team lead',
+            description: 'Manager',
+            status : false
+
+        },
         
     ],
 
