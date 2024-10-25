@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import {
   Table,
@@ -13,13 +13,21 @@ import { Todo } from "@/lib/store/Todo";
 import { useDialog } from "@/lib/store/useDialog";
 
 export const TableShowTodo = () => {
-  const { TodoList } = Todo();
-  const { setIdSelectedTodo, changeStatusDialogEditTodo ,changeStatusDialogDeleteTodo} = useDialog();
+  const TodoList = Todo((state) => state.TodoList);
+  const {
+    setIdSelectedTodo,
+    changeStatusDialogEditTodo,
+    changeStatusDialogDeleteTodo,
+  } = useDialog();
+
+ 
+ 
   return (
     <Table>
       <TableCaption>Todo list</TableCaption>
       <TableHeader>
         <TableRow>
+          <TableHead>NO.</TableHead>
           <TableHead>Title</TableHead>
           <TableHead>Description</TableHead>
           <TableHead>Status</TableHead>
@@ -27,9 +35,10 @@ export const TableShowTodo = () => {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {TodoList.map((node) => (
+        {TodoList.map((node , index) => (
           <React.Fragment key={node.id}>
             <TableRow>
+              <TableCell>{index + 1}</TableCell>
               <TableCell>{node.title}</TableCell>
               <TableCell>{node.description}</TableCell>
               <TableCell>{node.status === true ? "Done!" : "doing"}</TableCell>
@@ -46,7 +55,7 @@ export const TableShowTodo = () => {
                 <span
                   onClick={() => {
                     setIdSelectedTodo(node.id);
-                    changeStatusDialogDeleteTodo()
+                    changeStatusDialogDeleteTodo();
                   }}
                 >
                   Delete
